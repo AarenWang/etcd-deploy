@@ -37,8 +37,8 @@ if __name__ == "__main__":
       pub_ip =  ip_pair.split(":")[1]
       print("推送文件："+pub_ip+" 到 "+pri_ip+":"+cert_dir)
       push_cert(ssh_pem_path,pub_ip, "certs/ca.pem","ca-client.crt")
-      push_cert(ssh_pem_path,pub_ip, "peer-certs/"+pri_ip+".pem","infra"+str(i)+"-client.crt")
-      push_cert(ssh_pem_path,pub_ip, "peer-certs/"+pri_ip+"-key.pem","infra"+str(i)+"-client.key")
+      push_cert(ssh_pem_path,pub_ip, "certs/"+pri_ip+".pem","infra"+str(i)+"-client.crt")
+      push_cert(ssh_pem_path,pub_ip, "certs/"+pri_ip+"-key.pem","infra"+str(i)+"-client.key")
 
       push_cert(ssh_pem_path,pub_ip, "peer-certs/ca.pem","peer-ca.crt")
       push_cert(ssh_pem_path,pub_ip, "peer-certs/"+pri_ip+".pem","peer-infra"+str(i)+".crt")

@@ -1,0 +1,21 @@
+{
+  "CN": "etcd",
+  "hosts": [
+    "localhost",
+    "127.0.0.1",
+    "172.19.56.72",
+    "172.19.56.71",
+    "172.19.56.73"
+  ],
+  "key": {
+    "algo": "rsa",
+    "size": 2048
+  },
+  "names": [
+    {
+      "O": "Netease Limited Liability Company",
+      "OU": "Game Department",
+      "L": "HangZhou"
+    }
+  ]
+}

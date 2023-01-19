@@ -15,7 +15,10 @@ def generate_etc_cfg(yaml_file,i,pri_ip,pri_ip_list):
     py_object['advertise-client-urls'] = 'https://'+pri_ip+':2379'
     py_object['initial-cluster-token'] = 'etcd-cluster-1'
     py_object['initial-cluster'] = 'infra0=https://'+pri_ip_list[0]+':2380,infra1=https://'+pri_ip_list[1]+':2380,infra2=https://'+pri_ip_list[2]+':2380'
-    py_object['initial-cluster-state'] = 'new'
+    #py_object['initial-cluster-state'] = 'new'
+    # 调试通过后initial-cluster-state为 existing
+    py_object['initial-cluster-state'] = 'existing'
+
   
     client_transport_security = {}
     client_transport_security['cert-file'] = '/etc/etcd/certs/infra'+str(i)+'-client.crt'
@@ -33,7 +36,7 @@ def generate_etc_cfg(yaml_file,i,pri_ip,pri_ip_list):
 
     file = open(yaml_file, 'w', encoding='utf-8')
     stream = yaml.dump(py_object)
-    stream = stream.replace('\'true\'','true')
+    stream = stream.replace('\'true\'','true')  # yaml.dump 会将true转换为‘true’，这里替换回来，否则etcd启动会报错
     file.write(stream)
     #yaml.safe_dump(py_object, sys.stdout, default_flow_style=False)
 
